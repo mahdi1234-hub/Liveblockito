@@ -1,5 +1,5 @@
+import { clerkClient } from "@clerk/nextjs/server";
 import { NextRequest, NextResponse } from "next/server";
-import { getUsers } from "@/database";
 
 /**
  * Returns a list of user IDs from a partial search input
@@ -8,11 +8,18 @@ import { getUsers } from "@/database";
 
 export async function GET(request: NextRequest) {
   const { searchParams } = new URL(request.url);
-  const text = searchParams.get("text") as string;
+  const text = searchParams.get("text") || "";
 
-  const filteredUserIds = getUsers()
+  const client = await clerkClient();
+  const users = await client.users.getUserList({ limit: 20 });
+
+  const filteredUserIds = users.data
     .filter((user) => {
-      return user.info.name.toLowerCase().includes(text.toLowerCase());
+      const fullName =
+        [user.firstName, user.lastName].filter(Boolean).join(" ") ||
+        user.emailAddresses[0]?.emailAddress ||
+        "";
+      return fullName.toLowerCase().includes(text.toLowerCase());
     })
     .map((user) => user.id);
 
