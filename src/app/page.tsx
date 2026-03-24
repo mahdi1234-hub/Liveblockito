@@ -1,12 +1,15 @@
 import { Room } from "@/app/Room";
 import { TextEditor } from "@/components/TextEditor";
+import { StreamProvider } from "@/components/StreamProvider";
 
 export default function Home() {
   return (
     <main>
-      <Room>
-        <TextEditor />
-      </Room>
+      <StreamProvider>
+        <Room>
+          <TextEditor />
+        </Room>
+      </StreamProvider>
     </main>
   );
 }

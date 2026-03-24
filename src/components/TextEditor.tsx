@@ -22,6 +22,7 @@ import { CustomTaskItem } from "./CustomTaskItem";
 import { StaticToolbar, SelectionToolbar } from "./Toolbars";
 import styles from "./TextEditor.module.css";
 import { Avatars } from "@/components/Avatars";
+import { ScreenRecorder } from "@/components/ScreenRecorder";
 
 export function TextEditor() {
   return (
@@ -137,6 +138,7 @@ export function Editor() {
     <div className={styles.container}>
       <div className={styles.editorHeader}>
         <StaticToolbar editor={editor} />
+        <ScreenRecorder />
         <Avatars />
       </div>
       <div className={styles.editorPanel}>

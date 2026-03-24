@@ -1,4 +1,5 @@
 import { useOthers, useSelf } from "@liveblocks/react/suspense";
+import { UserButton } from "@clerk/nextjs";
 import styles from "./Avatars.module.css";
 
 export function Avatars() {
@@ -14,11 +15,12 @@ export function Avatars() {
       })}
 
       {currentUser && (
-        <div className="relative ml-8 first:ml-0">
+        <div className="relative ml-8 first:ml-0" style={{ display: "flex", alignItems: "center", gap: "8px" }}>
           <Avatar
             picture={currentUser.info.avatar}
             name={currentUser.info.name}
           />
+          <UserButton />
         </div>
       )}
     </div>

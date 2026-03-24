@@ -1,0 +1,246 @@
+.container {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.recordButton {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  border: 1px solid var(--border-color, #e0e0e0);
+  border-radius: 6px;
+  background: transparent;
+  color: var(--text-color, #333);
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.15s, border-color 0.15s;
+}
+
+.recordButton:hover {
+  background: rgba(255, 0, 0, 0.06);
+  border-color: #e53e3e;
+}
+
+.recordButton:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.recordDot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #e53e3e;
+  display: inline-block;
+}
+
+.recordDotActive {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #e53e3e;
+  display: inline-block;
+  animation: pulse 1.2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.3; }
+}
+
+.recordingControls {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.recordingIndicator {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13px;
+  font-weight: 600;
+  color: #e53e3e;
+  font-variant-numeric: tabular-nums;
+}
+
+.stopButton {
+  padding: 4px 12px;
+  border: 1px solid #e53e3e;
+  border-radius: 6px;
+  background: #e53e3e;
+  color: white;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+.stopButton:hover {
+  background: #c53030;
+}
+
+.loadingText {
+  font-size: 13px;
+  color: var(--text-color, #666);
+}
+
+/* Preview overlay - floating panel */
+.previewOverlay {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 1000;
+  animation: slideUp 0.3s ease-out;
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.previewContainer {
+  width: 400px;
+  background: var(--panel-bg, #1a1a2e);
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.previewHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 14px;
+  background: rgba(0, 0, 0, 0.3);
+}
+
+.previewHeaderLeft {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #fff;
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.previewClose {
+  padding: 4px 10px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 6px;
+  background: rgba(255, 0, 0, 0.8);
+  color: white;
+  font-size: 11px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+.previewClose:hover {
+  background: rgba(255, 0, 0, 1);
+}
+
+.previewContent {
+  position: relative;
+  aspect-ratio: 16 / 9;
+  background: #000;
+}
+
+.screenPreview {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.cameraBubble {
+  position: absolute;
+  bottom: 12px;
+  left: 12px;
+  width: 100px;
+  height: 75px;
+  border-radius: 8px;
+  object-fit: cover;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+}
+
+.previewFooter {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 14px;
+  background: rgba(0, 0, 0, 0.2);
+}
+
+.recorderAvatar {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.recorderName {
+  color: #fff;
+  font-size: 13px;
+  font-weight: 500;
+  flex: 1;
+}
+
+.liveTag {
+  padding: 2px 8px;
+  border-radius: 4px;
+  background: #e53e3e;
+  color: white;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+}
+
+/* Viewer overlay */
+.viewerOverlay {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 1000;
+  animation: slideUp 0.3s ease-out;
+}
+
+.viewerContainer {
+  width: 480px;
+  background: var(--panel-bg, #1a1a2e);
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.viewerHeader {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 14px;
+  background: rgba(0, 0, 0, 0.3);
+  color: #fff;
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.viewerHeader .previewClose {
+  margin-left: auto;
+}
+
+.viewerContent {
+  position: relative;
+  aspect-ratio: 16 / 9;
+  background: #000;
+}
